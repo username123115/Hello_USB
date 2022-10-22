@@ -33,7 +33,8 @@ endif ()
 
 add_executable(USB_Hello_World)
 target_sources(USB_Hello_World PUBLIC 
-                ${CMAKE_CURRENT_LIST_DIR}/main.c)
+                ${CMAKE_CURRENT_LIST_DIR}/main.c
+                ${CMAKE_CURRENT_LIST_DIR}/usb_descriptors.c)
 
 # Make sure TinyUSB can find tusb_config.h
 target_include_directories(USB_Hello_World PUBLIC
@@ -47,7 +48,7 @@ pico_enable_stdio_usb(USB_Hello_World 1)
 
 # Add the standard library to the build
 # target_link_libraries(USB_Hello_World pico_stdlib tinyusb_device, tinyusb_board)
-target_link_libraries(USB_Hello_World pico_stdlib)
+target_link_libraries(USB_Hello_World pico_stdlib tinyusb_device tinyusb_board)
 
 pico_add_extra_outputs(USB_Hello_World)
 
